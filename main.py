@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import Flask, render_template, redirect, url_for, session, flash, request
 
 
 app = Flask(__name__)
@@ -6,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main_page():
-    return 'Hello Flask'
+    return render_template('index.html')
 
 
 
