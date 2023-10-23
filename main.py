@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, session, flash, request
-
-
+import database
+from models import User, Customer, Item, ItemGroup, Order, OrderItem, Stock, SellingPrice, CostPrice, OrderStatus
+from flask_session import Session
 
 app = Flask(__name__)
 
@@ -11,36 +12,36 @@ def main_page():
 
 
 #Create new group product
-@app.route('/product_groups/', method=['GET', 'POST'])
-def product_group_add():
+@app.route('/item_groups/', method=['GET', 'POST'])
+def item_group_add():
     return render_template('index.html')
 
 # Create new and View products
-@app.route('/products/', methods=['GET', 'POST'])
-def product_add():
+@app.route('/items/', methods=['GET', 'POST'])
+def item_add():
     return render_template('index.html')
 
 
 # Edit product
-@app.route('/products/<int: product_id>/', methods=['GET', 'POST'])
-def product_edit():
+@app.route('/items/<int: item_id>/', methods=['GET', 'POST'])
+def item_edit():
     return render_template('index.html')
 
 
 # Add to product new price
-@app.route('/products/<int: product_id>/price', methods=['POST'])
-def product_price_add():
+@app.route('/items/<int: item_id>/price', methods=['POST'])
+def item_price_add():
     return render_template('index.html')
 
 # Increase product stock
-@app.route('/products/<int: product_id>/stock_add/', method=['POST'])
-def product_stock_add():
+@app.route('/items/<int: items_id>/stock_add/', method=['POST'])
+def item_stock_add():
     return render_template('index.html')
 
 
 # Decrease product stock
-@app.route('/products/<int: product_id>/stock_decrease/', method=['POST'])
-def product_stock_decrease():
+@app.route('/items/<int: item_id>/stock_decrease/', method=['POST'])
+def item_stock_decrease():
     return render_template('index.html')
 
 #Create a new customer and view customer
@@ -66,8 +67,8 @@ def order_status_edit():
 def report_sales_by_customers():
     return render_template('index.html')
 
-@app.route('/report_sales_by_products/', method=['GET', 'POST'])
-def report_sales_by_products():
+@app.route('/report_sales_by_items/', method=['GET', 'POST'])
+def report_sales_by_items():
     return render_template('index.html')
 
 @app.route('/report_gross_income/', method=['GET', 'POST'])
