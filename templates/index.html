@@ -1,13 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My crm</title>
-</head>
-<body>
-<h1>
-    This is my crm
-</h1>
+    <head>
+        <meta charset="UTF-8">
+        <title>CRM Sales</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    </head>
+   <body>
+        <h1> CRM Sales</h1>
+            <a class='login' href="/login/">Login</a>
+        <div class="input-container">
+            <input type="text" name="mail" placeholder="Enter your mail">
+            <input class='submit' type="button" value="Get Started">
+        </div>
 
-</body>
+        <div id="mini-form" class="hidden">
+            <form action="/" method="post">
+                <button class='submit2' id="close-button">X</button>
+                <h2>Enter Details</h2>
+                <input class="input-decor" type="text" name="name" placeholder="Name">
+                <input class="input-decor" type="text" name='mail' id="email" placeholder="Email"><br><br>
+
+                <input class="input-decor" type="text" name="company_name" placeholder="Company name">
+                <input class="input-decor" type="password" name="password" placeholder="Password"><br><br>
+                <input class="submit2" type="submit" value="Registration" id="save-button">
+            </form>
+        </div>
+
+        <img src="{{ url_for('static', filename='crm_sales.jpeg') }}" alt="Main_pic">
+        <footer>
+            <p>&copy; 2023 Ju</p>
+        </footer>
+        <script>
+        // Get references to objects
+            const miniForm = document.getElementById('mini-form');
+            const getStartedButton = document.querySelector('.submit');
+            const closeButton = document.getElementById('close-button');
+
+            // Event handler for the 'Get Started' button
+            getStartedButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Displaying the mini-table
+                miniForm.style.display = 'block';
+
+                // Transferring the value from the email field
+                const mailInput = document.querySelector('input[name="mail"]');
+                const emailInput = document.getElementById('email');
+                emailInput.value = mailInput.value;
+            });
+
+            // Event handler for the button "Close"
+            closeButton.addEventListener('click', () => {
+                miniForm.style.display = 'none';
+            });
+
+            // Event handler for the button "Save"
+            const saveButton = document.getElementById('save-button');
+            saveButton.addEventListener('click', () => {
+                // Retrieve data from input fields
+                const email = document.getElementById('email').value;
+
+                // Close the mini-table.
+                miniForm.style.display = 'none';
+            });
+        </script>
+    </body>
+
 </html>
