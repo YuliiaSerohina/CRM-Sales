@@ -7,7 +7,7 @@ from datetime import date
 class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(100), nullable=False)
+    name = Column(String(100), nullable=False, unique=True)
     organization_name = Column(String(100), nullable=False)
     mail = Column(String(50), nullable=False)
     password = Column(String(50), nullable=False)
@@ -160,6 +160,7 @@ class OrderItem(Base):
     __tablename__ = 'order_item'
     id = Column(Integer, primary_key=True, autoincrement=True)
     order_id = Column(Integer, ForeignKey('order.id'), nullable=False)
+    order = relationship('Order', back_populates='order_items')
     item_id = Column(Integer, ForeignKey('item.id'), nullable=False)
     quantity = Column(Integer, nullable=False)
     cost_price = Column(Integer, ForeignKey('cost_price.id'), nullable=False)
