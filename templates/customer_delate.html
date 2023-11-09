@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Customer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='customers.css') }}">
+
+</head>
+<body>
+ <div class="user-info">
+     <p class="user-name"> {{ user }}, <a class="logout" href="/logout/">Log out</a></p>
+ </div>
+ <form action="/customers/ {{ customer_id }}/" method="post">
+     <div>
+        <input class="input-decor" type="text" name="name" value="{{ customer.name }}"><br>
+        <input class="input-decor" type="text" name="phone" value="{{ customer.phone }}"><br>
+        <input class="input-decor" type="email" name="mail" value="{{ customer.mail }}"><br>
+        <input class="submit2" type="submit" value="Delete"><br><br>
+    </div>
+ </form>
+
+
+
+
+</body>
+</html>

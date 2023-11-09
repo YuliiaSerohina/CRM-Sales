@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Groups</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='customers.css') }}">
+</head>
+<body>
+ <div class="user-info">
+     <p class="user-name"> {{ user }}, <a class="logout" href="/logout/">Log out</a></p>
+ </div>
+<form action="/item_groups/" method="post">
+    <h1 class="header"> Add new items group</h1>
+    <div>
+         <a class='login' href="/crm/"><- Come back </a>
+    </div>
+    <div>
+        <input class="input-decor" type="text" name="name" placeholder="Name"><br><br>
+        <input class="submit2" type="submit" value="Ok">
+    </div>
+    <div>
+        {% for item in item_groups %}
+        <p>{{ item }}</p>
+        {% endfor %}
+    </div>
+</form>
+ <footer>
+     <p>&copy; 2023 Ju</p>
+ </footer>
+</body>
+</html>

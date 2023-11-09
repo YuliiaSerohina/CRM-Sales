@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Customer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='customers.css') }}">
+</head>
+<body>
+<form action="/customers/add/" method="post">
+    <div class="user-info">
+        <p class="user-name"> {{ user }}, <a class="logout" href="/logout/">Log out</a></p>
+    </div>
+    <h1 class="header"> Add customer</h1><br>
+    <div>
+         <a class='login' href="/customers/"><- Come back </a>
+    </div>
+
+    <div>
+        <input class="input-decor" type="text" name="name" placeholder="Customer name"><br>
+        <input class="input-decor" type="text" name="phone" placeholder="Phone number"><br>
+        <input class="input-decor" type="email" name="mail" placeholder="Mail"><br>
+        <input class="submit2" type="submit" value="Ok"><br><br>
+    </div>
+</form>
+</body>
+</html>
