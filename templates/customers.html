@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='customers.css') }}">
+</head>
+<body>
+ <div class="user-info">
+     <p class="user-name"> {{ user }}, <a class="logout" href="/logout/">Log out</a></p>
+ </div>
+ <h1 class="header">Customers</h1>
+<a class="add-customer" href="/customers/add/">+ Customer</a><br><br>
+<div>
+    <table class="table">
+        <tr>
+            <th class="table-item">Name</th>
+            <th class="table-item">Phone</th>
+            <th class="table-item">Mail</th>
+        </tr>
+        {% for item in customers_all %}
+        <tr>
+            <td class="table-item"><a class="table-item-decor" href="/customers/ {{ item.id }}">{{ item.name }}</a></td>
+            <td class="table-item"><a class="table-item-decor" href="/customers/ {{ item.id }}">{{ item.phone }}</a></td>
+            <td class="table-item"><a class="table-item-decor" href="/customers/ {{ item.id }}">{{ item.mail }}</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+ <footer>
+     <p>&copy; 2023 Ju</p>
+ </footer>
+</body>
+</html>

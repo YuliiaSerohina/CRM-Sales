@@ -33,7 +33,7 @@ class ItemGroup(Base):
         self.user_id = user_id
 
     def __repr__(self):
-        return f'Group name {self.name}'
+        return f'{self.name}'
 
 
 class Item(Base):
@@ -110,10 +110,11 @@ class Customer(Base):
     mail = Column(String(30), nullable=True)
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
 
-    def __init__(self, name, phone, mail):
+    def __init__(self, name, user_id, phone=None, mail=None):
         self.name = name
         self.phone = phone
         self.mail = mail
+        self.user_id = user_id
 
     def __repr__(self):
         return f'{self.name} {self.phone} {self.mail}'
