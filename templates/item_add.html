@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Items</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='customers.css') }}">
+</head>
+<body>
+ <div class="user-info">
+     <p class="user-name"> {{ user }}, <a class="logout" href="/logout/">Log out</a></p>
+ </div>
+ <h1 class="header">Items</h1>
+<form action="/items/" method="post" enctype="multipart/form-data">
+    <h3>Add a new item</h3>
+    <input type="text" name="name" placeholder="Name">
+    <input type="file" name="photo">
+    <input type="text" name="code" placeholder="Code">
+    <label for="item_group">Choose a group</label>
+
+    <select id="item_group" name="group">
+        {% for group in items_groups %}
+        <option value="{{ group.id }}"> {{group.name}} </option>
+        {% endfor %}
+    </select>
+
+    <input type="text" name="description" placeholder="Description">
+    <input type="submit" value="Ok">
+</form>
+<div>
+    <table class="table">
+        <tr>
+            <th class="table-item">Photo</th>
+            <th class="table-item">Name</th>
+            <th class="table-item">Code</th>
+            <th class="table-item">Group</th>
+            <th class="table-item">Description</th>
+        </tr>
+         {% for item in items_all %}
+        <tr>
+            <td class="table-item"><img src="data:image/png;base64,{{ item.photo }}" alt="{{ item.name }} Photo"></td>
+            <td class="table-item"><a class="table-item-decor" href="/items/ {{ item.id }}">{{ item.name }}</a></td>
+            <td class="table-item"><a class="table-item-decor" href="/items/ {{ item.id }}">{{ item.item_code }}</a></td>
+            <td class="table-item"><a class="table-item-decor" href="/items/ {{ item.id }}">{{ item.item_group }}</a></td>
+            <td class="table-item"><a class="table-item-decor" href="/items/ {{ item.id }}">{{ item.description }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+ <footer>
+     <p>&copy; 2023 Ju</p>
+ </footer>
+</body>
+</html>

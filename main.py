@@ -3,6 +3,8 @@ import database
 from models import User, Customer, Item, ItemGroup, Order, OrderItem, Stock, SellingPrice, CostPrice, OrderStatus
 from flask_session import Session
 from sqlalchemy import desc
+import io
+import base64
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -69,7 +71,29 @@ def item_group_add():
 
 @app.route('/items/', methods=['GET', 'POST'])
 def item_add():
-    return render_template('index.html')
+    database.init_db()
+    user_name = session.get('name', None)
+    current_user = session.get('user_id', None)
+    if request.method == 'POST':
+        item_name = request.form.get('name')
+        item_photo = request.files['photo']
+        photo_data = item_photo.read()
+        item_code = request.form.get('code')
+        item_group = request.form.get('group')
+        item_description = request.form.get('description')
+        item_new_add = Item(
+            item_name,
+            current_user,
+            base64.b64encode(photo_data).decode('utf-8'),
+            item_code, item_group,
+            item_description
+        )
+        database.db_session.add(item_new_add)
+        database.db_session.commit()
+    items_groups_all = database.db_session.query(ItemGroup).\
+        filter_by(user_id=current_user).order_by(ItemGroup.name).all()
+    items_all = database.db_session.query(Item).filter_by(user_id=current_user).order_by(Item.name).all()
+    return render_template('item_add.html', user=user_name, items_all=items_all, items_groups=items_groups_all)
 
 
 # Edit product
