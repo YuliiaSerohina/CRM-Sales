@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock add</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='customers.css') }}">
+</head>
+<body>
+ <div class="user-info">
+     <p class="user-name"> {{ user }}, <a class="logout" href="/logout/">Log out</a></p>
+ </div>
+ <h1 class="header">New arrivals</h1>
+   <div>
+         <a class='login' href="/items/{{ item_id }}/"><- Come back </a>
+    </div>
+
+<form action="/items/{{ item_id }}/stock_add/" method="post">
+    <input class="input-decor" type="number" name="quantity" id="q1" placeholder="Quantity"  oninput="updateTotal()"><br>
+    <input class="input-decor" type="number" name="cost_price" id="q2" placeholder="Cost price"  oninput="updateTotal()"><br>
+    <input class="input-decor" type="text" name="total" id="total" placeholder="Total" readonly><br>
+    <input class="submit2" type="submit" value="Ok">
+</form>
+  <script>
+        function updateTotal() {
+            var quantity = document.getElementById("q1").value;
+            var costPrice = document.getElementById("q2").value;
+            var total = quantity * costPrice;
+
+
+            total = Math.round(total * 100) / 100;
+
+            document.getElementById("total").value = total;
+        }
+    </script>
+ <footer>
+     <p>&copy; 2023 Ju</p>
+ </footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Price</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='customers.css') }}">
+</head>
+<body>
+ <div class="user-info">
+     <p class="user-name"> {{ user }}, <a class="logout" href="/logout/">Log out</a></p>
+ </div>
+ <h1 class="header">Price</h1>
+   <div>
+         <a class='login' href="/items/{{ item_id }}/"><- Come back </a>
+    </div>
+
+<form action="/items/{{ item_id }}/price/" method="post">
+    <h3 class="h3">Add a new price</h3>
+    <input class="input-decor" type="text" name="price" placeholder="Price"><br>
+    <input class="submit2" type="submit" value="Ok">
+</form>
+ <footer>
+     <p>&copy; 2023 Ju</p>
+ </footer>
+</body>
+</html>

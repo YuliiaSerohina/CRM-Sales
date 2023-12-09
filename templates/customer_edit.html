@@ -10,7 +10,13 @@
  <div class="user-info">
      <p class="user-name"> {{ user }}, <a class="logout" href="/logout/">Log out</a></p>
  </div>
+ </div>
+ <h1 class="header">{{ customer.name}}</h1>
+   <div>
+         <a class='login' href="/customers/"><- Come back </a>
+    </div>
  <form action="/customers/ {{ customer_id }}/" method="post">
+     <h3 class="h3">Edit customer</h3>
      <div>
         <input class="input-decor" type="text" name="name" value="{{ customer.name }}"><br>
         <input class="input-decor" type="text" name="phone" value="{{ customer.phone }}"><br>
@@ -18,9 +24,8 @@
         <input class="submit2" type="submit" value="Delete"><br><br>
     </div>
  </form>
-
-
-
-
+ <footer>
+     <p>&copy; 2023 Ju</p>
+ </footer>
 </body>
 </html>

@@ -40,15 +40,13 @@ class Item(Base):
     __tablename__ = 'item'
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(150), nullable=False)
-    photo = Column(LargeBinary)
     item_code = Column(String(50), nullable=True)
     item_group = Column(Integer, ForeignKey('item_group.id'), nullable=True)
     description = Column(String(500), nullable=True)
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
 
-    def __init__(self, name, user_id, photo=None, item_code=None, item_group=None, description=None):
+    def __init__(self, name, user_id, item_code=None, item_group=None, description=None):
         self.name = name
-        self.photo = photo
         self.item_code = item_code
         self.item_group = item_group
         self.description = description

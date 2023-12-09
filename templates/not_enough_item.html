@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item stock not enough</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='customers.css') }}">
+</head>
+<body>
+ <div class="user-info">
+     <p class="user-name"> {{ user }}, <a class="logout" href="/logout/">Log out</a></p>
+ </div>
+ <h1 class="header">New arrivals</h1>
+ <div>
+   <a class='login' href="/items/{{ item_id }}/"><- Come back </a>
+ </div>
+<h1>You can't decrease item, it doesn't enough</h1>
+
+ <footer>
+     <p>&copy; 2023 Ju</p>
+ </footer>
+</body>
+</html>
