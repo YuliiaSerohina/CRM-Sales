@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Items</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='customers.css') }}">
+</head>
+<body>
+ <div class="user-info">
+     <p class="user-name"> {{ user }}, <a class="logout" href="/logout/">Log out</a></p>
+ </div>
+ <h1 class="header">{{ item.name }}</h1>
+   <div>
+         <a class='login' href="/crm/"><- Come back </a>
+    </div>
+ <div class="item_manager">
+     <a class="item_link1" href="/items/{{ item_id }}/price/">Price</a>
+     <a class="item_link2" href="/items/{{ item_id }}/stock_add/">Stock + </a>
+     <a class="item_link3" href="/items/{{ item_id }}/stock_decrease/">Stock - </a>
+ </div><br><br>
+ <div>
+     <h3>Price {{ price.price }}</h3>
+     <h3>Stock {{ stock.stock }}</h3>
+ </div><br>
+
+<form action="/items/{{ item_id }}/" method="post" enctype="multipart/form-data">
+    <h3 class="h3">Edit item</h3>
+    <div class="form-group">
+        <label for="element1">Name</label>
+        <input class="input-decor" type="text" name="name" value="{{ item.name }}" id="element1">
+    </div>
+    <div class="form-group">
+        <label for="element2">Code</label>
+        <input class="input-decor" type="text" name="code" value="{{ item.item_code }}" id="element2">
+    </div>
+    <div class="form-group">
+        <label for="element3">Group</label>
+        <input class="input-decor" type="text" name="group" value="{{ item.item_group}}" id="element3">
+    </div>
+    <div class="form-group">
+        <label for="element4">Description</label>
+        <input class="input-decor" type="text" name="description" value="{{ item.description }}" id="element4"><br>
+    </div>
+    <input class="submit2" type="submit" value="Ok">
+</form>
+ <footer>
+     <p>&copy; 2023 Ju</p>
+ </footer>
+</body>
+</html>
